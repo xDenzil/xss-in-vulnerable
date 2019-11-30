@@ -1,3 +1,13 @@
+<?php
+session_start();
+include 'database/db_connection.php';
+
+$query = "INSERT INTO `user`( `name`, `message`) VALUES ('$name','$message');";
+mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +23,7 @@
 <body>
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-            <div class="container"><a class="navbar-brand" href="index.html">XSS in/Vulnerable</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand" href="index.php">XSS in/Vulnerable</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="reflected.php">Reflected</a></li>
@@ -65,7 +75,7 @@
     <div class="text-white footer-dark bg-primary">
         <footer>
             <div class="container">
-                <p class="copyright">Denzil Williams \ Chanda \ Sashione \ Kelly \ Rasheed</p>
+                <p class="copyright">Denzil Williams \ Chanda \ Sashione \ Kelleshia \ Rasheed</p>
             </div>
         </footer>
     </div>
