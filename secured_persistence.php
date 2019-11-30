@@ -5,14 +5,12 @@ if (isset($_POST['post'])) {
     $message = $_POST['message'] ;     
     if($name !=''||$message !=''){
         include 'assets\Database\db_connection.php';
-        $query = "INSERT INTO user( name, message) VALUES ('$name','$message');";
+        $query = "INSERT INTO secure_user( name, message) VALUES ('$name','$message');";
         mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
         header('Location: index.php');
     }
 }
-include 'assets\Database\db_connection.php';
-$query = "SELECT * FROM user";
-$result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +34,7 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                     <ul class="nav navbar-nav mr-auto">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="reflected.php">Reflected</a></li>
                         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"href="persistence.php">Persistent</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="persistence.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="secured_persistence.php">Secured</a></div></li></li>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="persistence.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="secured_persistence.php">Secured</a></div></li>
                         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom.php">DOM-based</a>
                             <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="#">Secured</a></div>
                         </li>
@@ -44,30 +42,26 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
     </div>
     </nav>
     </div>
-    <div class="jumbotron text-primary m-0 bg-primary">
+    <div class="jumbotron text-primary m-0">
         <div class="row justify-content-center">
             <div class="col col-8">
                 <div class="row">
                     <div class="col col-12 py-3">
-                        <h1 class="text-white mb-4">Site chat - vulnerable</h1>
+                        <h1 class="mb-4">Site chat - secured</h1>
                         <?php
                          // loop through data in database, displaying them in the table
                         while ($row = mysqli_fetch_array($result)){ 
-                        echo'<p class="p-2 border mb-2 text-white">Name: '; echo$row["name"];  echo "  Message: "; echo $row["message"]; echo"</p>";
+                        echo'<p class="p-2 border mb-2 text-white">Name: '; echo$row["name"]; echo "  Message:  "; echo $row["message"]; echo"</p>";
                         } ?>
                         <!--Just for aesthetic-->
-                        <p class="p-2 border mb-2 text-white">Name: Message</p>
-                        <p class="p-2 border mb-2 text-white">Name: Message</p>
-                       
+                        <p class="p-2 mb-2 text-white bg-primary">Name: Message</p>
+                        <p class="p-2 mb-2 text-white bg-primary">Name: Message</p>
                     </div>
                     <div class="col col-12 py-3">
                         <form method="POST" action="">
-                        <label class="text-white" for="name">Name</label><input class="form-control mb-3" type="text" id="name" name="name" value="">
-                        <label class="text-white" for="message">Message</label><textarea class="form-control" type="text" id="message" name="message" value=""></textarea>
-                        <button class="btn btn-dark" type="submit" name="post">Post</button>
-                        
-                       
-                        </form>
+                        <label for="name">Name</label><input class="form-control mb-3 bg-primary text-white" type="text" id="name" name="name" value="">
+                        <label for="message">Message</label><textarea class="form-control bg-primary text-white" id="message" name="message" value=""></textarea>
+                        <button class="btn btn-dark" type="submit" name="post">Post</button></form>
                     </div>
                 </div>
             </div>
