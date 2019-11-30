@@ -40,7 +40,7 @@ if (isset($_GET['secured'])) {
     </div>
     <div class="p-5 space">
         <div class="container">
-            <h1 class="text-center">you searched for:</h1>
+            <h1 class="text-center" id="searchtitle">you searched for:</h1>
             <h4 class="text-center p-5"><?php if (!empty($search)) {
                                             echo $search;
                                         } else {
