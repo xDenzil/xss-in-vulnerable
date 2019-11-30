@@ -1,9 +1,9 @@
 <?php
 session_start();
-include 'database/db_connection.php';
+// include 'database/db_connection.php';
 
-$query = "INSERT INTO `user`( `name`, `message`) VALUES ('$name','$message');";
-mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
+// $query = "INSERT INTO `user`( `name`, `message`) VALUES ('$name','$message');";
+// mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
 
 
 

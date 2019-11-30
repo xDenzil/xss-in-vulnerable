@@ -38,24 +38,25 @@ if (isset($_GET['secured'])) {
             </div>
         </nav>
     </div>
-    <div class="jumbotron m-0">
+    <div class="p-5 space">
         <div class="container">
-            <h1>reflected xss attacks</h1>
-            <header></header>
-            <p class="mt-3">Cross-site scripting (XSS) is a code injection attack that allows an attacker to execute malicious JavaScript in another user's browser.The attacker does not directly target his victim. Instead, he exploits a vulnerability in a website that
-                the victim visits, in order to get the website to deliver the malicious JavaScript for him. To the victim's browser, the malicious JavaScript appears to be a legitimate part of the website, and the website has thus acted as an unintentional
-                accomplice to the attacker. <a href="https://excess-xss.com">(Source)</a></p>
-            <p><a class="btn btn-primary mt-3" role="button" href="https://excess-xss.com">Learn more</a></p>
+            <h1 class="text-center">you searched for:</h1>
+            <h4 class="text-center p-5"><?php if (!empty($search)) {
+                                            echo $search;
+                                        } else {
+                                            echo '..Nothing Searched  Yet';
+                                        } ?></h4>
         </div>
     </div>
+
     <div class="jumbotron text-primary m-0 bg-primary">
         <div class="container">
             <h1 class="text-center text-white">website search</h1>
             <form>
                 <div class="form-group">
-                    <label class="text-white">Secured Input</label>
+                    <label class="text-white">Vulnerable Input</label>
                     <input class="form-control" type="text" name="searchvalue">
-                    <input class="btn btn-dark" type="submit" value="Search" name="secured">
+                    <input class="btn btn-dark" type="submit" value="Search" name="vulnerable">
                 </div>
             </form>
         </div>
@@ -65,21 +66,11 @@ if (isset($_GET['secured'])) {
             <h1 class="text-center text-primary">website search</h1>
             <form method="GET">
                 <div class="form-group">
-                    <label>Vulnerable Input</label>
+                    <label>Secured Input</label>
                     <input class="form-control" type="text" name="searchvalue">
-                    <input class="btn btn-primary" type="submit" value="Search" name="vulnerable">
+                    <input class="btn btn-primary" type="submit" value="Search" name="secured">
                 </div>
             </form>
-        </div>
-    </div>
-    <div class="p-5 space">
-        <div class="container">
-            <h1>you searched for:</h1>
-            <h4><?php if (!empty($search)) {
-                    echo $search;
-                } else {
-                    echo '..Nothing Searched  Yet';
-                } ?></h4>
         </div>
     </div>
     <div class="text-white footer-dark bg-primary">
