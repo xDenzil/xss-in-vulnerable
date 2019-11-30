@@ -1,3 +1,15 @@
+<?php
+$search = null;
+
+if (isset($_GET['secured'])) {
+    $search = htmlspecialchars($_GET['searchvalue']);
+} else if (isset($_GET['vulnerable'])) {
+    $search = $_GET['searchvalue'];
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -14,17 +26,17 @@
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
             <div class="container"><a class="navbar-brand" href="index.html">XSS in/Vulnerable</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div
-                    class="collapse navbar-collapse" id="navcol-1">
+                <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link active" href="reflected.html">Reflected</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="persistence.html">Persistent</a></li>
-                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom.html">DOM-based</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom.html">Vulnerable</a><a class="dropdown-item" role="presentation" href="#">Secured</a></div>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="reflected.php">Reflected</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="persistence.php">Persistent</a></li>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom.php">DOM-based</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="#">Secured</a></div>
                         </li>
-                    </ul><span class="navbar-text actions"> </span></div>
-    </div>
-    </nav>
+                    </ul><span class="navbar-text actions"> </span>
+                </div>
+            </div>
+        </nav>
     </div>
     <div class="jumbotron m-0">
         <div class="container">
@@ -40,22 +52,34 @@
         <div class="container">
             <h1 class="text-center text-white">website search</h1>
             <form>
-                <div class="form-group"><label class="text-white">Vulnerable Input</label><input class="form-control" type="text"><button class="btn btn-dark" type="button">Search</button></div>
+                <div class="form-group">
+                    <label class="text-white">Secured Input</label>
+                    <input class="form-control" type="text" name="searchvalue">
+                    <input class="btn btn-dark" type="submit" value="Search" name="secured">
+                </div>
             </form>
         </div>
     </div>
     <div class="jumbotron text-primary m-0 custom-accent">
         <div class="container">
             <h1 class="text-center text-primary">website search</h1>
-            <form>
-                <div class="form-group"><label>Secured Input</label><input class="form-control" type="text"><button class="btn btn-primary" type="button">Search</button></div>
+            <form method="GET">
+                <div class="form-group">
+                    <label>Vulnerable Input</label>
+                    <input class="form-control" type="text" name="searchvalue">
+                    <input class="btn btn-primary" type="submit" value="Search" name="vulnerable">
+                </div>
             </form>
         </div>
     </div>
-    <div class="p-5 space bg-primary">
+    <div class="p-5 space">
         <div class="container">
-            <h1 class="text-white">you searched for:</h1>
-            <h4 class="text-white">search results</h4>
+            <h1>you searched for:</h1>
+            <h4><?php if (!empty($search)) {
+                    echo $search;
+                } else {
+                    echo '..Nothing Searched  Yet';
+                } ?></h4>
         </div>
     </div>
     <div class="text-white footer-dark bg-primary">

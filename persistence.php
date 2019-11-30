@@ -14,17 +14,17 @@
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
             <div class="container"><a class="navbar-brand" href="index.html">XSS in/Vulnerable</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div
-                    class="collapse navbar-collapse" id="navcol-1">
+                <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="reflected.html">Reflected</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link active" href="persistence.html">Persistent</a></li>
-                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom.html">DOM-based</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom.html">Vulnerable</a><a class="dropdown-item" role="presentation" href="#">Secured</a></div>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="reflected.php">Reflected</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="persistence.php">Persistent</a></li>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom.php">DOM-based</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="#">Secured</a></div>
                         </li>
-                    </ul><span class="navbar-text actions"> </span></div>
-    </div>
-    </nav>
+                    </ul><span class="navbar-text actions"> </span>
+                </div>
+            </div>
+        </nav>
     </div>
     <div class="jumbotron text-primary m-0 bg-primary">
         <div class="row justify-content-center">
