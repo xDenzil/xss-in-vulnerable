@@ -1,5 +1,4 @@
 <?php
-
 $cook = $_GET['cookie'];
 
 
