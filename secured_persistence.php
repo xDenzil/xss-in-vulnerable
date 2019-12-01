@@ -1,16 +1,20 @@
 <?php
-
-if (isset($_POST['post'])) {  
-    $name = $_POST['name'];
-    $message = $_POST['message'] ;     
-    if($name !=''||$message !=''){
-        include 'assets\Database\db_connection.php';
-        $query = "INSERT INTO secure_user( name, message) VALUES ('$name','$message');";
-        mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
+include 'assets\Database\db_connection.php';
+if (isset($_POST['post'])) { 
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $name_sanitize = filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $message_sanitize = filter_var($message, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+    if ((filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)) || (filter_input($message, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH))==true){
+        mysqli_query($conn, "INSERT INTO secure_user( name, message) VALUES ('$name_sanitize','$message_sanitize');") or die("<h1>Could not get data.</h1>");
         header('Location: index.php');
+    }else{
+        header('Location: secured_persistence.php');
     }
-}
 
+}
+$query = "SELECT * FROM secure_user";
+$result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +55,7 @@ if (isset($_POST['post'])) {
                         <?php
                          // loop through data in database, displaying them in the table
                         while ($row = mysqli_fetch_array($result)){ 
-                        echo'<p class="p-2 border mb-2 text-white">Name: '; echo$row["name"]; echo "  Message:  "; echo $row["message"]; echo"</p>";
+                        echo'<p class="p-2 mb-2 text-white bg-primary">Name: '; echo$row["name"]; echo "  Message:  "; echo $row["message"]; echo"</p>";
                         } ?>
                         <!--Just for aesthetic-->
                         <p class="p-2 mb-2 text-white bg-primary">Name: Message</p>
