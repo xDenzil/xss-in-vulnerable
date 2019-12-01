@@ -17,10 +17,11 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="reflected.php">Reflected</a></li>
-                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"href="persistence.php">Persistent</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="persistence.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="secured_persistence.php">Secured</a></div></li>
-                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom.php">DOM-based</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="#">Secured</a></div>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="persistence.php">Persistent</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="persistence.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="secured_persistence.php">Secured</a></div>
+                        </li>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom-secured.php">DOM-based</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom-vulnerable.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="dom-secured.php">Secured</a></div>
                         </li>
                     </ul><span class="navbar-text actions"> </span>
                 </div>
@@ -41,27 +42,27 @@
         <div class="container w-75">
             <h3 class="text-white">Reflected xss</h3>
             <p>The non-persistent (or reflected) cross-site scripting vulnerability is by far the most basic type of web vulnerability. These holes show up when the data provided by a web client, most commonly in HTTP query parameters e.g. HTML form submission,
-                is used immediately by server-side scripts to parse and display a page of results for and to that user, without properly sanitizing the content</p>
+                is used immediately by server-side scripts to parse and display a page of results for and to that user, without properly sanitizing the content.</p>
         </div>
     </div>
     <div class="p-5 custom-accent">
         <div class="container w-75">
             <h3>persistent xss</h3>
-            <p class="text-primary">The non-persistent (or reflected) cross-site scripting vulnerability is by far the most basic type of web vulnerability. These holes show up when the data provided by a web client, most commonly in HTTP query parameters e.g. HTML form submission,
-                is used immediately by server-side scripts to parse and display a page of results for and to that user, without properly sanitizing the content</p>
+            <p class="text-primary">An attacker uses stored XSS to inject malicious content, into target application. Due to lack of proper validation this code is permanently stored by the target application, majorly in database. For example, an attacker may enter JavaScript based XSS payload in user
+                input field which will be getting stored in the database. Hence every time the user views the infected page, the malicious JavaScript script is transmitted to the victim’s browser.</p>
         </div>
     </div>
     <div class="p-5 bg-white">
         <div class="container w-75">
             <h3>dom-based xss</h3>
-            <p class="text-primary">The non-persistent (or reflected) cross-site scripting vulnerability is by far the most basic type of web vulnerability. These holes show up when the data provided by a web client, most commonly in HTTP query parameters e.g. HTML form submission,
-                is used immediately by server-side scripts to parse and display a page of results for and to that user, without properly sanitizing the content</p>
+            <p class="text-primary">
+                To be added.</p>
         </div>
     </div>
     <div class="text-white footer-dark bg-primary">
         <footer>
             <div class="container">
-                <p class="copyright">Denzil Williams \ Chanda \ Sashione \ Kelleshia \ Rasheed</p>
+                <p class="copyright">Denzil Williams 1602994 \ Chanderpaul Newman 1500558 <br> Sashione Thomas 1600340 \ Kelleshia Kinlocke 1603337 \ Rasheed Thorpe 1406957</p>
             </div>
         </footer>
     </div>

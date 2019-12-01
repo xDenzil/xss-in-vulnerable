@@ -37,9 +37,8 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not get data from user.<
                         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="persistence.php">Persistent</a>
                             <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="persistence.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="secured_persistence.php">Secured</a></div>
                         </li>
-                        </li>
-                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom.php">DOM-based</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="#">Secured</a></div>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom-secured.php">DOM-based</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom-vulnerable.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="dom-secured.php">Secured</a></div>
                         </li>
                     </ul><span class="navbar-text actions"> </span>
                 </div>
@@ -61,10 +60,6 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not get data from user.<
                             echo $row["message"];
                             echo "</p>";
                         } ?>
-                        <!--Just for aesthetic-->
-                        <p class="p-2 border mb-2 text-white">Name: Message</p>
-                        <p class="p-2 border mb-2 text-white">Name: Message</p>
-
                     </div>
                     <div class="col col-12 py-3">
                         <form method="POST" action="">
@@ -79,10 +74,10 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not get data from user.<
             </div>
         </div>
     </div>
-    <div class="text-white footer-dark bg-primary">
+    <div class="text-primary footer-dark bg-white">
         <footer>
             <div class="container">
-                <p class="copyright">Denzil Williams \ Chanda \ Sashione \ Kelleshia \ Rasheed</p>
+                <p class="copyright">Denzil Williams 1602994 \ Chanderpaul Newman 1500558 <br> Sashione Thomas 1600340 \ Kelleshia Kinlocke 1603337 \ Rasheed Thorpe 1406957</p>
             </div>
         </footer>
     </div>
