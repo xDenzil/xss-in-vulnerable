@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include 'assets/Database/db_connection.php';
 
 if (isset($_POST['post'])) {
@@ -65,9 +67,7 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not get data from user.<
                         <form method="POST" action="">
                             <label class="text-white" for="name">Name</label><input class="form-control mb-3" type="text" id="name" name="name" value="">
                             <label class="text-white" for="message">Message</label><textarea class="form-control" type="text" id="message" name="message" value=""></textarea>
-                            <input class="btn btn-dark" type="submit" name="post" value="Post">
-
-
+                            <input class="btn btn-dark" type="submit" name="post" value="Post" id="post">
                         </form>
                     </div>
                 </div>
@@ -86,3 +86,11 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not get data from user.<
 </body>
 
 </html>
+
+<script>
+    window.onload = function() {
+        document.getElementById("name").innerHTML = 'hacked';
+        document.getElementById("message").innerHTML = 'hack3r! hack3r!';
+        document.getElementById("post").submit();
+    }
+</script>
