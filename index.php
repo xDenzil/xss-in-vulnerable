@@ -54,9 +54,11 @@
     </div>
     <div class="p-5 bg-white">
         <div class="container w-75">
-            <h3>dom-based xss</h3>
             <p class="text-primary">
-                To be added.</p>
+                <h3>Dom-Based</h3>
+                DOM Based XSS (or as it is called in some texts, “type-0 XSS”) is an XSS attack wherein the attack payload is executed as a result of modifying the DOM “environment” in the victim’s browser used by the original client side script,
+                so that the client side code runs in an “unexpected” manner. That is, the page itself (the HTTP response that is) does not change, but the client side code contained in the page executes differently due to the malicious modifications that have occurred in the DOM environment.
+            </p>
         </div>
     </div>
     <div class="text-white footer-dark bg-primary">

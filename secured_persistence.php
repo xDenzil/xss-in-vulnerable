@@ -1,16 +1,20 @@
 <?php
+include 'assets/Database/db_connection.php';
 
 if (isset($_POST['post'])) {
-    $name = $_POST['name'];
-    $message = $_POST['message'];
-    if ($name != '' || $message != '') {
-        include 'assets\Database\db_connection.php';
-        $query = "INSERT INTO secure_user( name, message) VALUES ('$name','$message');";
-        mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
-        header('Location: index.php');
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $name_sanitize = filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $message_sanitize = filter_var($message, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    if ((filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)) || (filter_input($message, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH)) == true) {
+        mysqli_query($conn, "INSERT INTO secure_user( name, message) VALUES ('$name_sanitize','$message_sanitize');") or die("<h1>Could not get data.</h1>");
+        header('Location: secured_persistence.php');
+    } else {
+        header('Location: secured_persistence.php');
     }
 }
-
+$query = "SELECT * FROM secure_user";
+$result = mysqli_query($conn, $query) or die("<h1>Could not show results.</h1>");
 
 ?>
 <!DOCTYPE html>
@@ -35,7 +39,7 @@ if (isset($_POST['post'])) {
                         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="persistence.php">Persistent</a>
                             <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="persistence.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="secured_persistence.php">Secured</a></div>
                         </li>
-                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom-secured.php">DOM-based</a>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="dom.php">DOM-based</a>
                             <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="dom-vulnerable.php">Vulnerable</a><a class="dropdown-item" role="presentation" href="dom-secured.php">Secured</a></div>
                         </li>
                     </ul><span class="navbar-text actions"> </span>
@@ -52,15 +56,12 @@ if (isset($_POST['post'])) {
                         <?php
                         // loop through data in database, displaying them in the table
                         while ($row = mysqli_fetch_array($result)) {
-                            echo '<p class="p-2 border mb-2 text-white">Name: ';
+                            echo '<p class="p-2 mb-2 text-white bg-primary">';
                             echo $row["name"];
-                            echo "  Message:  ";
+                            echo " :";
                             echo $row["message"];
                             echo "</p>";
                         } ?>
-                        <!--Just for aesthetic-->
-                        <p class="p-2 mb-2 text-white bg-primary">Name: Message</p>
-                        <p class="p-2 mb-2 text-white bg-primary">Name: Message</p>
                     </div>
                     <div class="col col-12 py-3">
                         <form method="POST" action="">
@@ -75,7 +76,7 @@ if (isset($_POST['post'])) {
     <div class="text-white footer-dark bg-primary">
         <footer>
             <div class="container">
-                <p class="copyright">Denzil Williams 1602994 \ Chanderpaul Newman 1500558 <br> Sashione Thomas 1600340 \ Kelleshia Kinlocke 1603337 \ Rasheed Thorpe 1406957</p>
+                <p class="copyright">Denzil Williams \ Chanda \ Sashione \ Kelleshia \ Rasheed</p>
             </div>
         </footer>
     </div>

