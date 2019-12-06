@@ -6,8 +6,11 @@ if (isset($_POST['post'])) {
     $name_sanitize = filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
     $message = mysqli_real_escape_string($conn, $_POST['message']);
     $message_sanitize = filter_var($message, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-    if ((filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH)) || (filter_input($message, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH)) == true) {
-        mysqli_query($conn, "INSERT INTO secure_user( name, message) VALUES ('$name_sanitize','$message_sanitize');") or die("<h1>Could not get data.</h1>");
+    if ((filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH))
+        || (filter_input($message, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH)) == true
+    ) {
+        mysqli_query($conn, "INSERT INTO secure_user( name, message) VALUES ('$name_sanitize','$message_sanitize');")
+            or die("<h1>Could not get data.</h1>");
         header('Location: secured_persistence.php');
     } else {
         header('Location: secured_persistence.php');

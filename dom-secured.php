@@ -78,13 +78,6 @@ session_start();
                     document.getElementById("show-expression").innerHTML = 'Bad';
                     document.getElementById("show-result").innerHTML = 'X';
                 }
-
-                //var encoded = encodeURI(expression)
-                //var notallowed = /[^a-zA-Z]/;
-                //var result = str.match(notallowed);
-                //document.getElementById("show-expression").innerHTML = result;
-                //var res = eval(encoded);
-                //document.getElementById("show-result").innerHTML = res;
             }
         }
     </script>
